@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+
+    <body>
+        <ul id="parent">
+            <li class="item">One</li>
+            <li class="item">Two</li>
+            <li class="item">Three</li>
+        </ul>
+        <script>
+
+            /**
+             * One Approach
+             * 
+             * **/
+             var children = Array.from(document.getElementsByClassName('item'));
+
+             children.forEach(element=>{
+                 console.log('Intializing..')
+                element.addEventListener('click',function(){
+                   // console.log(element.innerHTML)
+                })
+             })
+
+             /***
+              * event deleagation approach
+              * /@abstract
+              * 
+              */
+
+              var parent = document.getElementById('parent')
+              parent.addEventListener('click', event => {
+                 console.log('Captured..' + event.target.className)
+                if(event.target.className ==='item'){
+                    console.log(event.target.innerHTML)
+                }
+
+              });
+
+        </script>
+    </body>
+</html>
