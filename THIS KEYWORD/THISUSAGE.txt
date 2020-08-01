@@ -1,0 +1,6 @@
+In the first example where we our inner function is executing , the 
+this keyword refers to the global context . Owing to this , it doesn't
+work and returns undefined.
+
+
+In the ES6 implementaiton using the Fat arrow function, this inside fat arrow function points to whatever the value of this inside upper function is. Hence value of this inside arrow function is lexically scoped.
