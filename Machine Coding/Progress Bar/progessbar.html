@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Progress Bar</title>
+    <body>
+        <div class="bar-container">
+            <div class="bar"/>
+        </div>
+        <button onClick="start(2)">Start</button>
+
+        <script>
+            function start(seconds){
+                var element = document.querySelector('.bar');
+                // element.style.transition = `${seconds}s linear width`;
+                // element.style.width ='100%';
+                let atPercent = 0;
+                const interval = setInterval(()=>{
+                    atPercent++
+                    console.log('Running at' + atPercent);
+
+                    if(atPercent>=100){
+                        clearInterval(interval);
+                    }
+               element.style.width = `${atPercent}%`
+                },(seconds*1000)/10);
+            }
+        </script>
+        <style> 
+        .bar{
+            background-color: green;
+            height:100%;
+            width:0%;
+        }
+        .bar-container{
+            width:200px;
+            height: 30px;
+            margin:40px;
+            background-color: grey;
+        }
+        div{
+            min-width: 30px;
+            min-height: 30px;
+            padding: 10%;
+            border:1px solid black;
+        }
+        </style>
+    </body>
+</head>
+</html>    
