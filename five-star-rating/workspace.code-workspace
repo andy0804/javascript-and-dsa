@@ -1,0 +1,28 @@
+{
+  "folders": [
+	{
+		"path": "..\\javascript-and-dsa"
+	},
+	{
+		"path": "..\\..\\Users\\Sanyuktha\\Desktop\\Old Code\\linkedlist-20210122T153333Z-001\\linkedlist"
+	},
+	{
+		"path": "..\\..\\Users\\Sanyuktha\\Desktop\\Old Code\\tree-20210122T160229Z-001"
+	},
+	{
+		"path": "..\\..\\Users\\Sanyuktha\\Desktop\\Old Code\\weave-20210122T160232Z-001"
+	},
+	{
+		"path": "..\\..\\Users\\Sanyuktha\\Desktop\\Old Code\\spiral_matrix-20210122T160255Z-001"
+	},
+	{
+		"path": "..\\JS Exercises"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "JS Exercises"
+  }
+}

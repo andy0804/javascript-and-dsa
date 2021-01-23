@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="center">
+      <p>
+        <code>
+          margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform:
+          translate(-50%, -50%); transform: translate(-50%, -50%)
+        </code>
+      </p>
+    </div>
+    <p class="note">
+      Note: Center aligning has no effect if the width property is not set (or
+      set to 100%).
+    </p>
+    <div class="horiz-center">
+      <code
+        >margin: auto; width: 50%; border: 3px solid green; padding: 10px;</code
+      >
+    </div>
+    <div class="image-container">
+      <p class="note">Centering an image</p>
+      <img src="img/paris.jpg" />
+    </div>
+    <div>
+      <h4>
+        Center Vertically - Using padding There are many ways to center an
+        element vertically in CSS. A simple solution is to use top and bottom
+        padding:
+      </h4>
+      <div class="vCenter">
+        <code> .center { padding: 70px 0; border: 3px solid green; } </code>
+      </div>
+    </div>
+    <h2>Flexbox Centering</h2>
+
+    <p>
+      A container with both the justify-content and the align-items properties
+      set to <em>center</em> will align the item(s) in the center (in both
+      axis).
+    </p>
+
+    <div class="flexCenter">
+      <code>
+        .flexCenter { display: flex; justify-content: center; align-items:
+        center; height: 200px; border: 3px solid green; }
+      </code>
+    </div>
+
+    <h2>Vertical Center</h2>
+    <p>
+      In this example, we use positioning and the transform property to
+      vertically center an element inside a container element:
+    </p>
+
+    <div class="vcontainer">
+      <div class="vertical-center">
+        <p>I am vertically centered.</p>
+      </div>
+    </div>
+    <h1>Add text on image</h1>
+    <div class="banner-container">
+      <img src="img/paris.jpg" alt="Snow" style="width: 100%" />
+      <div class="bottom-left">Bottom Left</div>
+      <div class="top-left">Top Left</div>
+      <div class="top-right">Top Right</div>
+      <div class="bottom-right">Bottom Right</div>
+      <div class="centered">Centered</div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
