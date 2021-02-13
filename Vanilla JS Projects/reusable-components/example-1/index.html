@@ -1,0 +1,54 @@
+<!-- 
+
+ Shadow DOM is a new feaute built into browswers
+ chidrens will be wrapped in shadow root
+ shadow root is a particular dom node that encapsulates elements inside of it.
+ Guarantees that it works in the same way , allowing us to create re-usable component
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      div {
+        width: 1200px;
+      }
+    </style>
+    <template> <h1>Hello this is a sample template</h1> </template></template>
+    <my-component></my-component>
+    <my-component></my-component>
+
+    <script>
+      class MyComponent extends HTMLElement {
+        constructor() {
+          super();
+          this.addEventListener("click", () => {
+            this.style.color = "red"
+              ? (this.style.color = "blue")
+              : (this.style.color = "red");
+          });
+        }
+        connectedCallback() {
+          this.style.color = "blue";
+          this.style.width = "1200px"
+          this.style.float = "left";
+          console.log("My Component is connected");
+          const template = document.querySelector("template");
+          var doc = new DOMParser().parseFromString('<div><h1> just some stuff </h1></div>', "text/xml");
+
+          const clone = document.importNode(doc.firstChild, true);
+
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.appendChild(clone);
+        }
+      }
+      customElements.define("my-component", MyComponent);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: auto;
+        margin: 0 auto;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        flex-wrap: wrap;
+        border: 1px solid grey;
+        padding: 10px 10px;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+    </style>
+    <h3>
+      There is a button on a page with text inside that says 'Clicked {#} times'
+      with the number changing each time the button has been clicked.
+    </h3>
+    <h3>
+      Follow up: Now each time the button is clicked, spawn a new button with
+      its own counter, and the same functionality.
+    </h3>
+    <div class="container">
+      <h3>Current counter : <span id="count"></span></h3>
+      <button onclick="updateCounter()" id="btnCounter">
+        Click me to update counter
+      </button>
+      <button onclick="addButton()" id="btnButtonSpawn">
+        Click me to spawn button
+      </button>
+      <p>New Buttons will show here</p>
+      <div id="newButtons"></div>
+    </div>
+    <script>
+      let intialCount = 0;
+      document.querySelector("#count").innerHTML = intialCount;
+
+      function updateCounter() {
+        document.querySelector("#count").innerHTML = ++intialCount;
+      }
+
+      let container = document.querySelector(".container");
+
+      container.addEventListener("click", function (event) {
+        if (event.target.className === "spawn") {
+          let currentCount = +event.target.nextElementSibling.firstElementChild
+            .innerHTML;
+          event.target.nextElementSibling.firstElementChild.innerHTML =
+            currentCount + 1;
+        }
+      });
+
+      function addButton() {
+        let button = document.createElement("button");
+        button.innerHTML = " I am new spawned";
+        button.style.display = "block";
+        button.style.margin = "10px 10px";
+        button.className = "spawn";
+        let p = document.createElement("p");
+        p.innerHTML = "Counter is";
+        let span = document.createElement("span");
+        span.innerHTML = "0";
+        p.appendChild(span);
+        let div = document.querySelector("#newButtons");
+        div.appendChild(button);
+        div.appendChild(p);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .container > div {
+        width: 500px;
+        text-align: center;
+        line-height: 75px;
+      }
+      button {
+        width: inherit;
+        padding: 10px 10px;
+        position: relative;
+        left: 0;
+        background: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+      }
+      button.active {
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+      }
+      .show {
+        display: block;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+    <div class="container">
+      <div class="tab" id="tab1">
+        <button id="btnTab1" class="active">Tab1</button>
+        <p id="tabDetails1" class="tabContent">
+          Lorem ipsum dolor sit amet Tab1
+        </p>
+      </div>
+      <div class="tab" id="tab2">
+        <button id="btnTab2">Tab2</button>
+        <p id="tabDetails2" class="tabContent">
+          Lorem ipsum dolor sit amet Tab2
+        </p>
+      </div>
+      <div class="tab" id="tab3">
+        <button id="btnTab3">Tab3</button>
+        <p id="tabDetails3" class="tabContent">
+          Lorem ipsum dolor sit amet Tab2
+        </p>
+      </div>
+    </div>
+    <script>
+      let tab = document.querySelector(".container");
+      document.querySelector("#tabDetails1").style.display = "block";
+      document.querySelector("#tabDetails2").style.display = "none";
+      document.querySelector("#tabDetails3").style.display = "none";
+
+      tab.addEventListener("click", function (event) {
+        // hide all tab content
+        console.log("clicked");
+        let para = Array.from(document.querySelectorAll(".tabContent"));
+        let buttons = Array.from(document.querySelectorAll("button"));
+        buttons.forEach((i) => {
+          i.classList.remove("active");
+        });
+        para.forEach((i) => {
+          i.style.display = "none";
+        });
+
+        let id = event.target.id;
+        console.log("id", id);
+        document.querySelector(`#${id}`).classList.add("active");
+        document.querySelector(`#${id}`).nextElementSibling.style.display =
+          "block";
+      });
+    </script>
+  </body>
+</html>
