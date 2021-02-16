@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .flexbox-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .flexbox-item {
+        width: 500px;
+        margin: 10px;
+        border: 3px solid #333;
+        background-color: #dfdfdf;
+      }
+      .flexbox-item-1 {
+        min-height: 500px;
+      }
+    </style>
+    <h4>
+      Write an algorithm that mimics the same. For example, you have 10 items
+      and each has number of sales increasing randomly per second. Use the right
+      data structure and algorithm to host the top selling item
+    </h4>
+
+    <div class="flexbox-container">
+      <div id="sellingList" class="flexbox-item flexbox-item-1"></div>
+    </div>
+    <script>
+      let topSellingList = [
+        { name: "FIFA2021", count: 10 },
+        { name: "Call of Duty", count: 11 },
+        { name: "GTA San Andreas", count: 12 },
+        { name: "NFS 2020", count: 13 },
+        { name: "Assasins Creed", count: 14 },
+      ];
+
+      updateList();
+      setInterval(function () {
+        topSellingList.forEach((i) => {
+          i.count = Math.ceil(Math.random() * 10) + i.count;
+        });
+        topSellingList.sort((a, b) => (a.count > b.count ? -1 : 1));
+        updateList();
+      }, 3000);
+      function updateList() {
+        document.querySelector("#sellingList").innerHTML = "";
+        let ul = document.createElement("ul");
+        topSellingList.forEach((i) => {
+          const li = document.createElement("li");
+          const span = document.createElement("span");
+          const p = document.createElement("p");
+
+          span.innerHTML = `Item name : ${i.name}`;
+          p.innerHTML = `Item Count : ${i.count}`;
+
+          li.appendChild(span);
+          li.appendChild(p);
+          ul.appendChild(li);
+        });
+
+        document.querySelector("#sellingList").appendChild(ul);
+      }
+    </script>
+  </body>
+</html>

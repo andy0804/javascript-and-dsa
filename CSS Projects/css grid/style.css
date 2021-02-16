@@ -1,0 +1,198 @@
+/* Background Styles Only */
+
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+* {
+  font-family: Raleway;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #333;
+  height: 100%;
+  margin: 0;
+}
+
+.grid-container {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 200px 250px;
+  grid-auto-rows: minmax(150, auto);
+  /* grid-row-gap: 20px;
+  grid-column-gap: 10px; */
+  /**for same value in gaps*/
+  grid-gap: 20px;
+  /* grid-template-areas:
+    "header header"
+    "sidebar content"
+    "sidebar content"; */
+}
+.grid-item-1 {
+  /* grid-column-start: 1;
+  grid-column-end: 3; */
+  grid-column: 1 /-1;
+}
+.grid-item-2 {
+  /* grid-column-start: 1;
+  grid-column-end: 3; */
+  grid-row-start: 2;
+}
+.grid-item-3 {
+  grid-row: 2;
+  /* grid-column-start: 1;
+  grid-column-end: 3; */
+  /* grid-row-start: 2;
+  grid-row-end: 4; */
+
+  /* grid-row-start: 2;
+  grid-row-end: 4; */
+}
+/* .grid-item-1 {
+  grid-area: header;
+}
+.grid-item-2 {
+  grid-area: sidebar;
+}
+.grid-item-3 {
+  grid-area: content;
+} */
+
+.grid-lesson-1 {
+  /**define column sizes you want*/
+  /*percent , px , rems*/
+  /*200 px column on left , 100 px column on right*/
+  grid-template-columns: 200px 100px;
+  /**suppose you want the grid to grow dynamicallywe use fr where in this example
+    we define 1 fr for the right column and 2fr implying twice the size*/
+  grid-template-columns: 2fr 1fr;
+
+  /** suppose we we want 4 columsn to be each 100pxwide*/
+  grid-template-columns: repeat(4, 100px);
+  /** can also apply grid style to rows like 200px  first row and second tow 100px*/
+  /* grid-template-rows: 200px 100px; */
+  /** if we dont know the size of the rows we can add a default size */
+  grid-auto-rows: 150px;
+}
+
+.grid-item {
+  position: relative;
+  font-size: 25px;
+  padding: 20px;
+  padding-top: 50px;
+  background-color: #379ad6;
+  color: #222;
+  border: 1px solid white;
+}
+
+.grid-item:nth-child(odd) {
+  background-color: #5bbdfa;
+}
+
+.grid-item::before {
+  content: "Grid Item";
+  position: absolute;
+  font-size: 25px;
+  font-weight: bold;
+  top: 10px;
+  left: 15px;
+}
+
+.grid-item::after {
+  position: absolute;
+  font-size: 25px;
+  top: 10px;
+  right: 15px;
+  font-weight: bold;
+}
+
+.grid-item-1::after {
+  content: "1";
+}
+
+.grid-item-2::after {
+  content: "2";
+}
+
+.grid-item-3::after {
+  content: "3";
+}
+
+.grid-item-4::after {
+  content: "4";
+}
+
+.grid-item-5::after {
+  content: "5";
+}
+
+.grid-item-6::after {
+  content: "6";
+}
+
+.grid-item-7::after {
+  content: "7";
+}
+
+.grid-item-8::after {
+  content: "8";
+}
+
+.grid-item-9::after {
+  content: "9";
+}
+
+.grid-item-10::after {
+  content: "10";
+}
+
+.grid-item-11::after {
+  content: "11";
+}
+
+.side-links {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.side-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: white;
+  width: 180px;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+.side-link-youtube {
+  background-color: red;
+}
+
+.side-link-twitter {
+  background-color: #1da1f2;
+}
+
+.side-link-github {
+  background-color: #6e5494;
+}
+
+.side-link-text {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.side-link-icon {
+  color: white;
+  font-size: 30px;
+}

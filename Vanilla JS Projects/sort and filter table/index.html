@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      -moz-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    body {
+      color: #333;
+      font-size: 1em;
+    }
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: #000;
+      text-decoration: none;
+    }
+    .container {
+      margin: 50px auto;
+      padding: 0 50px;
+      max-width: 960px;
+    }
+    table {
+      background: #fff;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    td,
+    th {
+      padding: 4px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      background-color: #ddd;
+      font-weight: 400;
+    }
+    th a,
+    td a {
+      display: block;
+      width: 100%;
+    }
+    th a.sort-by {
+      padding-right: 18px;
+      position: relative;
+    }
+    a.sort-by:before,
+    a.sort-by:after {
+      border: 4px solid transparent;
+      content: "";
+      display: block;
+      height: 0;
+      right: 5px;
+      top: 50%;
+      position: absolute;
+      width: 0;
+    }
+    a.sort-by:before {
+      border-bottom-color: #666;
+      margin-top: -9px;
+    }
+    a.sort-by:after {
+      border-top-color: #666;
+      margin-top: 1px;
+    }
+  </style>
+  <body>
+    
+    <h3>
+      Having a table on the front end, how would you sort the names in the
+      table? How would you filter that information?
+    </h3>
+    <div class="container">
+        <input checked name="filter"  onclick="updateFilter('name')" type="radio" id="radioName">Name </input>
+        <input  name="filter"  onclick="updateFilter('age')" type="radio" id="radioAge"> Age </input>
+        <input  name="filter"  onclick="updateFilter('score')" type="radio" id="radioScore"> Score </input>
+        <input  name="filter"  onclick="updateFilter('college')" type="radio" id="radioUniversity">University </input>
+       <p> <span>Filter </span><input id="filter" type="search" /></p>
+      <table>
+        <th><a id="name" href="#name" class="sort-by">Name</a></th>
+        <th><a id="age" href="#age" class="sort-by">Age</a></th>
+        <th><a id="college" href="#uni" class="sort-by">University</a></th>
+        <th><a id="score" href="#score" class="sort-by">Gre Score</a></th>
+        <tbody id="tableData"></tbody>
+      </table>
+    </div>
+
+    <script>
+      let nameSort = false;
+      let ageSort = false;
+      let collegeSort = false;
+      let scoreSort = false;
+      let currentFilter = "name";
+      let tableData = [
+        { name: "Ananth", age: 30, college: "UIC", score: 310 },
+        { name: "Harish", age: 31, college: "FSU", score: 318 },
+        { name: "Chinmay", age: 25, college: "CMU", score: 332 },
+        { name: "Arvind", age: 29, college: "IUPUI", score: 316 },
+        { name: "Saurabh", age: 28, college: "TU Delf", score: 320 },
+      ];
+      document
+        .querySelector(".container")
+        .addEventListener("click", function (event) {
+          switch (event.target.id) {
+            case "name":
+              nameSort = !nameSort;
+
+              tableData.sort((a, b) => {
+                if (nameSort) {
+                  return a.name < b.name ? 1 : -1;
+                } else {
+                  return a.name > b.name ? 1 : -1;
+                }
+              });
+              break;
+            case "age":
+              console.log("Age Sort");
+              ageSort = !ageSort;
+              tableData.sort((a, b) => {
+                if (ageSort) {
+                  return a.age < b.age ? 1 : -1;
+                } else {
+                  return a.age > b.age ? 1 : -1;
+                }
+              });
+              break;
+            case "college":
+              collegeSort = !collegeSort;
+              tableData.sort((a, b) => {
+                if (collegeSort) {
+                  return a.college < b.college ? 1 : -1;
+                } else {
+                  return a.college > b.college ? 1 : -1;
+                }
+              });
+              break;
+            case "score":
+              scoreSort = !scoreSort;
+              tableData.sort((a, b) => {
+                if (scoreSort) {
+                  return a.score < b.score ? 1 : -1;
+                } else {
+                  return a.score > b.score ? 1 : -1;
+                }
+              });
+              break;
+          }
+
+          buildTable(tableData);
+        });
+    
+      buildTable(tableData);
+
+      function buildTable(data) {
+        document.querySelector("#tableData").innerHTML = "";
+
+        data.forEach((i) => {
+          const row = `<tr><td>${i.name}</td><td>${i.age}</td><td>${i.college}</td><td>${i.score}</td><tr/>`;
+          document.querySelector("#tableData").innerHTML += row;
+        });
+      }
+      document.querySelector("#filter").addEventListener("keyup",function(event){
+       console.log('current filter',currentFilter)
+       console.log('current value',event.target.value)
+
+       let filteredData = [];
+
+       switch (currentFilter) {
+            case "name":
+             filteredData = tableData.filter(i=> i.name.toLowerCase().startsWith(event.target.value.toLowerCase())) 
+            break;
+            case "age":
+            filteredData = tableData.filter(i=> i.age.toString().startsWith(event.target.value)) 
+              break;
+            case "college":
+            filteredData = tableData.filter(i=> i.college.toLowerCase().toString().startsWith(event.target.value.toLowerCase())) 
+              break;
+            case "score":
+            filteredData = tableData.filter(i=> i.score.toString().startsWith(event.target.value)) 
+
+              break;
+          }
+   
+          buildTable(filteredData);
+        });
+
+    
+      function updateFilter(val){
+          currentFilter = val;
+      }
+    </script>
+  </body>
+</html>
