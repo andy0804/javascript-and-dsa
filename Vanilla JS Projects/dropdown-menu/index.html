@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        font-family: Courier New;
+        font-size: 20px;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      .dropdown {
+        transition: all 0.2s ease-in-out;
+        overflow: hidden;
+        margin: 30px;
+        background: rgb(248, 248, 248);
+        border: solid 1px rgb(222, 222, 222);
+        width: 320px;
+        cursor: pointer;
+      }
+      .menu {
+        height: 228px;
+      }
+      .close .menu {
+        height: 0px;
+      }
+      li {
+        padding: 14px 10px;
+        border-top: solid 1px rgb(202, 202, 202);
+      }
+      .icon {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .close > .icon > span {
+        transform: rotate(180deg);
+      }
+    </style>
+    <div class="dropdown close">
+      <h2 class="icon">Dropdown <span>∆</span></h2>
+      <ul class="menu">
+        <li><a href="#">Item 1</a></li>
+        <li><a href="#">Item 2</a></li>
+        <li><a href="#">Item 3</a></li>
+        <li><a href="#">Item 4</a></li>
+      </ul>
+    </div>
+    <script>
+      document
+        .querySelector(".dropdown")
+        .addEventListener("click", function (e) {
+          if (document.querySelector(".dropdown").classList.contains("close")) {
+            document.querySelector(".dropdown").classList.remove("close");
+          } else {
+            document.querySelector(".dropdown").classList.add("close");
+          }
+        });
+    </script>
+  </body>
+</html>
