@@ -1,4 +1,13 @@
 //abcabcbb
+/**
+ *
+ * @param { /**
+ * The goal is to anchor i and find the longest range of [i, j].
+ * When s[i, j] has a duplicate letter, we remove s[i] from the
+ * set and move i to the next position so we don't include
+ * s[prev i] in the next range calculation.}
+ */
+
 const lengthOfLongestSubstring = (s) => {
   // declaring the variables
 
