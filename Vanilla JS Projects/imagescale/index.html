@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      #img1 {
+        transition: 1s;
+      }
+      .enlarge {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+    <!--Write code to show upscaled image on hover (similar to product image feature in Amazon detail page).-->
+    <img
+      id="img1"
+      src="https://foswiki.org/pub/Support/Glossary/600px-Example.svg.png"
+      width="100px"
+      height="100px"
+    />
+    <script>
+      const getImage = document.querySelector("#img1");
+      getImage.addEventListener("mouseenter", function (e) {
+        getImage.classList.toggle("enlarge");
+      });
+      getImage.addEventListener("mouseleave", function (e) {
+        getImage.classList.remove("enlarge");
+      });
+    </script>
+  </body>
+</html>

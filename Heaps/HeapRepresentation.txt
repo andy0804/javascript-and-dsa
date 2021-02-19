@@ -1,0 +1,37 @@
+Parent Index = FLOOR OF (INDEX - 1)/2
+
+Left Child = 2 * INDEX + 1
+Right Child = 2 * INDEX + + 2
+
+Example : 
+
+                 1
+            2        3  
+         4    5    6    7 
+
+Root at index = 0
+
+So our arry is 1 |
+
+Now left child of 1 
+
+2*0 + 1 = 1
+
+So our array is 1 | 2 | 
+
+
+Right Child = 2*0 + 2 = 2 
+
+So our arry is 1 | 2 | 3
+
+Now lets examine LEFT CHILD 2 and it's children
+
+Lefr Child Index = 1
+
+So Left Child's Left Child will be
+
+2*1 + 1 = 3
+
+
+So the array eventually will be....
+1 2 3 4 5 6 7

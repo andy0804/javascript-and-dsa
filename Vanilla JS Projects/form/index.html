@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+      }
+
+      .flex-container {
+        display: flex;
+        flex-direction: column;
+        width: 900px;
+        height: 700px;
+        border: 1px solid grey;
+      }
+
+      .flex-item {
+        justify-content: space-evenly;
+        margin: 10px 10px;
+        display: flex;
+        justify-content: center;
+        border: 1px solid grey;
+      }
+      input {
+        margin: 20px 20px;
+      }
+      table {
+        background: #fff;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td,
+      th {
+        padding: 4px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        text-align: left;
+        vertical-align: middle;
+      }
+      th {
+        background-color: #ddd;
+        font-weight: 400;
+      }
+      .noData {
+        text-align: center;
+      }
+      p {
+        display: block;
+        width: 100%;
+        margin: 10px 10px;
+      }
+    </style>
+    <!-- <div class="header">
+      Build a form that hits an API with some value from a textfield to search a
+      catalog of books. the API returns an array of book objects w/ title,
+      author, and url. Display a list of links with Title as the display text
+      that directs to that url. What if you want to search by author or book?
+      What component would you build to enable that? (select dropdown)
+    </div> -->
+
+    <div class="flex-container">
+      <p>
+        Build a form that hits an API with some value from a textfield to search
+        a catalog of books. the API returns an array of book objects w/ title,
+        author, and url. Display a list of links with Title as the display text
+        that directs to that url. What if you want to search by author or book?
+        What component would you build to enable that? (select dropdown)
+      </p>
+      <div class="flex-item">
+        <form id="myForm">
+          <label for="search" class="for"
+            >Enter your search
+            <input type="search" placeholder="Search" />
+          </label>
+          <input onclick="search()" value="Search" type="button" />
+        </form>
+      </div>
+      <div class="flex-item">
+        <table>
+          <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>LINK</th>
+            <th>META</th>
+            <th>META</th>
+          </thead>
+          <tbody id="tbodyData">
+            <tr>
+              <td class="noData" colspan="5">No Data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      const books = [
+        {
+          name: "Harry Potter and the prisoner of Azkaban",
+          link: "https://www.google.com?query=harryPotter",
+        },
+      ];
+      function search() {
+        let tbodyData = document.querySelector("#tbodyData");
+        let rowData = "";
+        books.forEach((i, index) => {
+          rowData += `<tr><td>${index}</td><td>${i.name}</td><td> <a href="${i.link}">${i.name} </a></td><td>dummy</td><td>duummy</td></tr>`;
+        });
+        tbodyData.innerHTML = "";
+        tbodyData.innerHTML = rowData;
+      }
+    </script>
+  </body>
+</html>
