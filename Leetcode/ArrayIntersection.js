@@ -16,10 +16,13 @@ const arrayInt1 = (arr1, arr2) => {
   let intersectedArray = [];
   let map = {};
   // first array pointer
+
+  // O(k) => k is length of arr1
   for (let val of arr1) {
     if (!map[val]) map[val] = val.toString();
   }
   console.log(map);
+  // O(m) => m is length of arr2
   for (let val2 of arr2) {
     if (map[val2]) {
       intersectedArray.push(val2);
