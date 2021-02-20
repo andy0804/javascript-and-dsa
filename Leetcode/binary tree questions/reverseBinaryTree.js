@@ -9,12 +9,13 @@ function TreeNode(val, left, right) {
  * @return {TreeNode}
  */
 var invertTree = function (root) {
+  // edge case for root has not defined
   if (!root) return root;
-
-  if (root && !root.left && !root.right) return root;
-
-  if (!root.right && !root.left) return;
-  [root.left, root.right] = [root.right, root.left];
+  // edge case when root is defined but no children
+  if (root && !root.left & !root.right) return root;
+  // leaf node terminating condition
+  if (!root.left && !root.right) return;
+  [root.right, root.left] = [root.left, root.right];
   invertTree(root.left);
   invertTree(root.right);
 
