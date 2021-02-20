@@ -12,14 +12,10 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function (root, p, q) {
-  const lcaOptimized = (root, n1, n2) => {
-    if (root == null) return null;
-    if (root.val === n1 || root.val === n2) return root;
-    const leftNode = lcaOptimized(root.left, n1, n2);
-    const rightNode = lcaOptimized(root.right, n1, n2);
-    if (leftNode && rightNode) return root;
-    return leftNode ? leftNode : rightNode;
-  };
-  const result = lcaOptimized(root, p.val, q.val);
-  return result;
+  if (!root) return;
+  if (root.val === n1.val || root.val === n2.val) return root;
+  const leftNode = lowestCommonAncestor(root.left, n1, n2);
+  const rightNode = lowestCommonAncestor(root.right, n1, n2);
+  if (leftNode && rightNode) return root;
+  return leftNode ? leftNode : rightNode;
 };
