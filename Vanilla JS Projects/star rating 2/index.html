@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>Star Rating</title>
+  </head>
+
+  <body>
+    <style>
+      .container {
+        width: 1200px;
+        height: 100%;
+        margin: 20px auto;
+        text-align: center;
+      }
+      input[type="checkbox"] {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+      label {
+        width: 60px;
+        height: 60px;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+      .unchecked::before,
+      .checked::after {
+        position: absolute;
+        content: "\2605";
+        left: 0;
+        bottom: 0;
+        font-size: 50px;
+        color: grey;
+      }
+      .checked::after {
+        color: orange;
+      }
+      .unchecked:hover::before {
+        color: orange;
+      }
+    </style>
+    <div class="container">
+      <h1>Star Rating</h1>
+
+      <label class="unchecked" for="r1">
+        <input id="r1" type="checkbox" class="star-rating" />
+      </label>
+      <label class="unchecked" for="r2">
+        <input id="r2" type="checkbox" class="star-rating" />
+      </label>
+      <label class="unchecked" for="r3">
+        <input id="r3" type="checkbox" class="star-rating" />
+      </label>
+      <label class="unchecked" for="r4">
+        <input id="r4" type="checkbox" class="star-rating" />
+      </label>
+      <label class="unchecked" for="r5">
+        <input id="r5" type="checkbox" class="star-rating" />
+      </label>
+
+      <p>Your star rating is <span id="userRating"></span></p>
+    </div>
+    <script>
+      document
+        .querySelector(".container")
+        .addEventListener("click", function (event) {
+          if (event.target.className == "star-rating") {
+            const starLabels = document.querySelectorAll("label");
+
+            // fetch all inputs
+            const starInputs = document.querySelectorAll("input");
+            // initialize the rating to 0
+            let initialRating = 0;
+            // loop through inputs and identify the star that was clicked and set the rating variable
+            for (let i = 0; i < starInputs.length; i++) {
+              if (starInputs[i] == event.target) {
+                starInputs[i].checked = true;
+                // stars start with 1
+                initialRating = i + 1;
+              }
+            }
+            // loop through the star labels from 0 to the current rating and mark all as checked and add class of checked
+
+            for (let i = 0; i < initialRating; i++) {
+              starLabels[i].className = "checked";
+            }
+            // loop through the star labels from current rating to the end and mark rest are grey
+            for (let i = initialRating; i < starLabels.length; i++) {
+              starLabels[i].className = "unchecked";
+              starInputs[i].checked = false;
+            }
+
+            document.querySelector("#userRating").innerHTML = initialRating;
+          }
+        });
+    </script>
+  </body>
+</html>

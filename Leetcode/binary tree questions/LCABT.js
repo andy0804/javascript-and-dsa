@@ -11,7 +11,7 @@
  * @param {TreeNode} q
  * @return {TreeNode}
  */
-var lowestCommonAncestor = function (root, p, q) {
+var lowestCommonAncestor = function (root, n1, n2) {
   if (!root) return;
   if (root.val === n1.val || root.val === n2.val) return root;
   const leftNode = lowestCommonAncestor(root.left, n1, n2);
