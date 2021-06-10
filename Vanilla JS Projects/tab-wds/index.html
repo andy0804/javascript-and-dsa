@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs</title>
+    <script src="script.js" defer></script>
+    <script src="script-dynamic.js" defer></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <ul class="tabs">
+      <li class="tab" data-tab-target="#home">
+        <button class="tab-button">Home</button>
+      </li>
+      <li class="tab" data-tab-target="#pricing">
+        <button class="tab-button">Pricing</button>
+      </li>
+      <li class="tab" data-tab-target="#about">
+        <button class="tab-button">About</button>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="active" id="home" data-tab-content>
+        <h1>Home</h1>
+        <p>Home Content</p>
+      </div>
+      <div data-tab-content id="pricing">
+        <h1>Pricing</h1>
+        <p>Pricing Content</p>
+      </div>
+      <div data-tab-content id="about">
+        <h1>About</h1>
+        <p>About Content</p>
+      </div>
+    </div>
+
+    <div class="tab-button-dynamic"></div>
+    <div class="tab-content-dynamic"></div>
+  </body>
+</html>
