@@ -55,6 +55,7 @@ function generateTabs() {
     const createDiv = document.createElement("div");
     if (i === 0) {
       createDiv.className = "active";
+      createNewTab.classList.add("active");
     }
     createDiv.id = tabDetails[i];
     const att = document.createAttribute("data-tab-content-dynamic");
