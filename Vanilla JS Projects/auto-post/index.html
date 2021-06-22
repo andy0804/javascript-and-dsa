@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+ h1 {
+     text-align: center;
+ }
+ .content {
+     display: flex;
+     justify-content: center;
+     min-width: 400px;
+     min-height: 200px;
+     border:1px solid grey;
+     margin:2%
+ }
+ </style>
+<body>
+  <h1>Design a web page that auto posts when you reach the end of the page.</h1>  
+  <div class="content">
+  <p>This is post 1</p>
+  </div>
+  <div class="content">
+    <p>This is post 1</p>
+    </div>
+    <div class="content">
+        <p>This is post 1</p>
+    </div>
+
+        <script>window.onscroll = function(ev) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                // you're at the bottom of the page
+                console.log('bottom of the page')
+                document.body.append('Adding some text')
+            }
+        };</script>
+</body>
+
+</html>
